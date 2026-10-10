@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090e21">
+<title>Beheshta TOEFL Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#090e21;--panel:#141d38;--text:#f5f4ff;--muted:#aab4d1;--purple:#b9a5ff;--blue:#89c5ff;--line:#ffffff16}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at top,#252653 0,transparent 48%),var(--bg);color:var(--text);font-family:Vazirmatn,sans-serif;line-height:1.9}
+button,input,select{font:inherit}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1050px,calc(100% - 30px));margin:auto}
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:10px;direction:ltr}
+.logo-icon{display:grid;place-items:center;width:43px;height:43px;border:1px solid #b9a5ff70;border-radius:14px;background:#b9a5ff19;color:var(--purple);font-weight:800;font-size:20px}
+.logo small{display:block;font-size:9px;letter-spacing:2px;color:var(--muted)}
+.logo strong{font-size:14px}
+nav{display:flex;gap:18px;font-size:12px;color:var(--muted)}
+nav a:hover{color:var(--purple)}
+.hero{padding:65px 0 45px;display:grid;grid-template-columns:1.3fr .7fr;gap:30px;align-items:center}
+.eyebrow{color:var(--purple);font-size:10px;letter-spacing:2px}
+h1{font-size:clamp(34px,5vw,54px);line-height:1.5;margin:12px 0}
+.gradient{background:linear-gradient(90deg,#e7caff,#90c9ff);background-clip:text;color:transparent}
+.intro{color:#c0c8e0;font-size:14px;line-height:2.2}
+.heart{color:#ffafd9}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.btn{border:1px solid var(--line);border-radius:13px;padding:10px 17px;background:#ffffff09;color:white;cursor:pointer;font-size:12px}
+.btn.primary{background:linear-gradient(110deg,#7667d7,#527fc4);border:0}
+.btn:hover{filter:brightness(1.12)}
+.art{min-height:245px;display:grid;place-items:center;position:relative}
+.orb{width:190px;height:190px;border-radius:50%;display:grid;place-items:center;border:1px solid #c8baff55;background:radial-gradient(circle at 30% 25%,#9587ff55,transparent 50%),linear-gradient(140deg,#252b57,#111831);box-shadow:0 0 70px #8d79ff22}
+.orb span{font-size:65px;color:#e0d5ff}
+.float{position:absolute;background:#192342;border:1px solid var(--line);border-radius:14px;padding:10px 13px;font-size:11px;box-shadow:0 12px 30px #0004}
+.float.one{top:20px;right:0}.float.two{bottom:15px;left:0}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.stat,.card{background:linear-gradient(140deg,#192343d9,#11182fd9);border:1px solid var(--line);border-radius:19px;padding:20px}
+.stat small{display:block;color:var(--muted);font-size:11px}
+.stat strong{font-size:23px}
+section{padding-top:65px}
+.section-head{margin-bottom:22px}
+h2{font-size:25px;margin:5px 0}
+.sub{color:var(--muted);font-size:12px;margin:0}
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.skill{background:#141d38;border:1px solid var(--line);border-radius:17px;padding:18px 14px;cursor:pointer;color:white;text-align:right}
+.skill:hover{border-color:#b9a5ff80;transform:translateY(-2px)}
+.skill .symbol{font-size:23px;color:var(--purple)}
+.skill strong{display:block;direction:ltr;text-align:right}
+.skill p{font-size:11px;color:var(--muted);margin-bottom:0}
+.columns{display:grid;grid-template-columns:1.25fr .75fr;gap:14px}
+.card h3{margin-top:0}
+.passage{direction:ltr;text-align:left;background:#080e20;border-radius:13px;padding:15px;font:14px/1.9 Georgia,serif;color:#dce3fa}
+.answers{display:grid;gap:8px;margin-top:15px}
+.answer{direction:ltr;text-align:left;background:#ffffff06;border:1px solid var(--line);border-radius:11px;padding:11px;color:#e5e9fa;cursor:pointer;font-size:12px}
+.answer.correct{border-color:#77ddb7;background:#77ddb71b}
+.answer.wrong{border-color:#ff9bb7}
+.feedback{font-size:12px;color:#a7ebd0}
+.words{direction:ltr;text-align:left;border:1px solid #b9a5ff30;border-radius:15px;padding:18px;background:#0d142b}
+.words h3{font:30px Georgia,serif;margin:8px 0}
+.words p{font:14px/1.8 Georgia,serif;color:#c4cde7}
+.meaning{direction:rtl;text-align:right;background:#a58cff15;border-radius:10px;padding:10px;font-size:12px;color:#d9ceff;margin:12px 0}
+label{display:block;font-size:12px;margin-top:15px;color:#c7cfe5}
+input,select{width:100%;padding:11px;border-radius:11px;background:#0b1228;border:1px solid var(--line);color:white;margin-top:7px}
+.plan-result{margin-top:15px;padding:12px;border-radius:12px;background:#77ddb714;color:#c9f2df;font-size:12px}
+.quote{font-size:21px;line-height:2;color:#ded5ff}
+footer{border-top:1px solid var(--line);margin-top:60px;padding:25px 0;color:#929dbd;font-size:11px;display:flex;justify-content:space-between;gap:12px}
+@media(max-width:700px){nav{display:none}.hero{grid-template-columns:1fr;padding-top:35px;gap:0}.art{grid-row:1;min-height:205px}.orb{width:155px;height:155px}.orb span{font-size:50px}.hero h1{font-size:35px}.skills{grid-template-columns:repeat(2,1fr)}.columns{grid-template-columns:1fr}.stats{gap:7px}.stat{padding:12px 10px}.stat strong{font-size:19px}.stat small{font-size:10px}section{padding-top:48px}h2{font-size:22px}footer{flex-wrap:wrap}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a class="logo" href="#">
+    <span class="logo-icon">B✦</span>
+    <span><strong>Beheshta</strong><small>TOEFL STUDIO</small></span>
+  </a>
+  <nav><a href="#skills">مهارت‌ها</a><a href="#vocab">واژه‌یار</a><a href="#planner">برنامهٔ من</a></nav>
+</header>
+
+<main>
+<section class="hero" style="padding-top:50px">
+  <div>
+    <div class="eyebrow">YOUR PERSONAL LEARNING SPACE</div>
+    <h1>بهشته جانم،<br><span class="gradient">آینده‌ات منتظر توست.</span></h1>
+    <p class="intro">این فضا را با عشق ساختم تا در مسیر رسیدن به آرزوهایت همراهت باشد. هر بار که این‌جا می‌آیی، یادت باشد که توانایی یادگیری، پیشرفت و ساختن آینده‌ای زیبا را داری. من از صمیم قلب برای موفقیتت دعا می‌کنم. <span class="heart">♥</span></p>
+    <div class="actions"><a class="btn primary" href="#skills">شروع مسیر موفقیت من ←</a><a class="btn" href="#planner">برنامهٔ مطالعه</a></div>
+  </div>
+  <div class="art"><div class="orb"><span>✦</span></div><div class="float one">✧ Keep going</div><div class="float two">♥ یک قدم در هر روز</div></div>
+</section>
+
+<div class="stats">
+  <div class="stat"><small>تمرین‌های انجام‌شده</small><strong id="exerciseCount">۰</strong></div>
+  <div class="stat"><small>لغت‌های مرورشده</small><strong id="wordCount">۰</strong></div>
+  <div class="stat"><small>هدف روزانه</small><strong id="minutesStat">۳۰ دقیقه</strong></div>
+</div>
+
+<section id="skills">
+  <div class="section-head"><div class="eyebrow">BUILD YOUR SKILLS</div><h2>چهار مهارت اصلی تافل</h2><p class="sub">از یک تمرین کوتاه شروع کن و آرام‌آرام پیش برو.</p></div>
+  <div class="skills">
+    <button class="skill" onclick="showPractice(0)"><span class="symbol">▤</span><strong>Reading</strong><p>درک مطلب و متن‌های اکادمیک</p></button>
+    <button class="skill" onclick="showPractice(1)"><span class="symbol">♫</span><strong>Listening</strong><p>درک نکته‌های مهم شنیداری</p></button>
+    <button class="skill" onclick="showPractice(2)"><span class="symbol">◉</span><strong>Speaking</strong><p>تمرین پاسخ و روان صحبت‌کردن</p></button>
+    <button class="skill" onclick="showPractice(3)"><span class="symbol">✎</span><strong>Writing</strong><p>نوشتن و بهترسازی جمله‌ها</p></button>
+  </div>
+</section>
+
+<section class="columns" id="practice">
+  <div class="card">
+    <div class="eyebrow">QUICK PRACTICE</div><h2 id="practiceTitle">Reading · تمرین کوتاه</h2>
+    <p class="sub" id="instruction">متن را بخوان و بهترین پاسخ را انتخاب کن.</p>
+    <div class="passage" id="passage">Research suggests that urban green spaces can improve residents’ well-being. Parks provide opportunities for exercise and social interaction, while trees may help reduce the effects of high temperatures. However, the benefits are not distributed equally when some neighborhoods have fewer public green areas.</div>
+    <p id="question">What is the main point of the passage?</p>
+    <div class="answers" id="answers">
+      <button class="answer" onclick="checkAnswer(this,'A')">A. Parks are expensive to maintain.</button>
+      <button class="answer" onclick="checkAnswer(this,'B')">B. Green spaces offer benefits, but access can be unequal.</button>
+      <button class="answer" onclick="checkAnswer(this,'C')">C. Trees prevent every urban problem.</button>
+      <button class="answer" onclick="checkAnswer(this,'D')">D. Cities should remove public parks.</button>
+    </div>
+    <p class="feedback" id="feedback"></p>
+    <button class="btn" onclick="nextPractice()">تمرین بعدی ←</button>
+  </div>
+  <aside class="card"><div class="eyebrow">A LITTLE REMINDER</div><p class="quote">لازم نیست هر روز کامل باشی؛ فقط کافی‌ست هر روز یک قدم برداری.</p><p class="sub">به توانایی‌هایت باور داشته باش.</p><hr style="border-color:var(--line);margin:25px 0"><div class="eyebrow">YOUR PROGRESS</div><p class="sub">پیشرفت با تمرین‌های انجام‌شده ثبت می‌شود.</p><h2 id="progress">۰٪</h2></aside>
+</section>
+
+<section id="vocab">
+  <div class="section-head"><div class="eyebrow">DAILY VOCABULARY</div><h2>واژه‌یار روزانه</h2><p class="sub">یک لغت را یاد بگیر، معنی‌اش را ببین و تلفظش را بشنو.</p></div>
+  <div class="card">
+    <div class="words"><span class="sub">واژهٔ امروز</span><h3 id="word">significant</h3><p id="example">The policy had a significant effect on education.</p><div class="meaning" id="meaning" hidden>قابل‌توجه، مهم؛ چیزی که اثر یا اهمیت زیادی دارد.</div></div>
+    <div class="actions"><button class="btn primary" onclick="revealMeaning()">نمایش معنی</button><button class="btn" onclick="speakWord()">🔊 شنیدن تلفظ</button><button class="btn" onclick="nextWord()">لغت بعدی ←</button></div>
+  </div>
+</section>
+
+<section id="planner">
+  <div class="section-head"><div class="eyebrow">YOUR STUDY PLAN</div><h2>برنامهٔ مطالعهٔ تو</h2><p class="sub">یک برنامهٔ ساده بساز که با وقتت سازگار باشد.</p></div>
+  <div class="card">
+    <label for="minutes">روزانه چند دقیقه وقت داری؟</label>
+    <select id="minutes" onchange="updateMinutes()"><option value="15">۱۵ دقیقه</option><option value="30" selected>۳۰ دقیقه</option><option value="45">۴۵ دقیقه</option><option value="60">۶۰ دقیقه</option><option value="90">۹۰ دقیقه</option><option value="120">۱۲۰ دقیقه</option></select>
+    <label for="weak">کدام مهارت برایت دشوارتر است؟</label>
+    <select id="weak"><option>Reading</option><option>Listening</option><option>Speaking</option><option>Writing</option></select>
+    <button class="btn primary" style="margin-top:18px" onclick="makePlan()">ساخت برنامهٔ امروز</button>
+    <div class="plan-result" id="plan" hidden></div>
+  </div>
+</section>
+
+<section><div class="card" style="text-align:center"><div class="eyebrow">FOR YOU, WITH LOVE</div><h2>برای تو، با آرزوی موفقیت <span class="heart">♥</span></h2><p class="sub">آینده با قدم‌های کوچک ساخته می‌شود. من برای موفقیتت دعا می‌کنم.</p></div></section>
+</main>
+<footer><span>Beheshta TOEFL Studio</span><span>نسخهٔ آغازین · ساخته‌شده با عشق</span></footer>
+</div>
+
+<script>
+const practices=[
+{title:'Reading · تمرین کوتاه',instruction:'متن را بخوان و بهترین پاسخ را انتخاب کن.',passage:'Research suggests that urban green spaces can improve residents’ well-being. Parks provide opportunities for exercise and social interaction, while trees may help reduce the effects of high temperatures. However, the benefits are not distributed equally when some neighborhoods have fewer public green areas.',question:'What is the main point of the passage?',answers:['A. Parks are expensive to maintain.','B. Green spaces offer benefits, but access can be unequal.','C. Trees prevent every urban problem.','D. Cities should remove public parks.'],correct:'B',explain:'متن هم مزایای فضای سبز را می‌گوید و هم به نابرابری دسترسی اشاره می‌کند.'},
+{title:'Listening · تمرین نمونه',instruction:'این متن را مانند یک گفتار کوتاه بخوان و پاسخ بده.',passage:'Professor: Your research proposal is due on Friday. Include a clear research question and at least two academic sources. You do not need to finish the entire project.',question:'What should the proposal include?',answers:['A. The complete final project.','B. A clear question and two academic sources.','C. Five interviews.','D. A ten-minute speech.'],correct:'B',explain:'این تمرین شبیه‌سازی متنی است، نه فایل صوتی واقعی. استاد پرسش روشن و دو منبع را خواسته است.'},
+{title:'Speaking · تمرین پاسخ',instruction:'پاسخت را با یک نظر و یک دلیل بساز.',passage:'Speaking prompt: Do you prefer studying alone or with a group? Explain your preference and give an example.',question:'کدام روش برای ساخت پاسخ روشن بهتر است؟',answers:['A. نظر، دلیل و مثال','B. فقط تکرار پرسش','C. جمله‌های نامرتبط','D. بدون هیچ دلیل'],correct:'A',explain:'ابتدا نظرت را بگو، بعد دلیل و یک مثال کوتاه اضافه کن. ارزیابی صوتی هنوز فعال نیست.'},
+{title:'Writing · دستور زبان',instruction:'جملهٔ درست را انتخاب کن.',passage:'Academic writing is clearer when the subject and verb agree and each sentence expresses a complete idea.',question:'Which sentence is correct?',answers:['A. Students needs more time.','B. Students need more time.','C. Students needing more time.','D. Students is need more time.'],correct:'B',explain:'Students فاعل جمع است؛ پس فعل درست need است.'}
+];
+let pIndex=0,answered=false,exercises=0,wordsSeen=0,wIndex=0;
+const vocab=[
+['significant','The policy had a significant effect on education.','قابل‌توجه، مهم؛ چیزی که اثر یا اهمیت زیادی دارد.'],
+['evaluate','Researchers evaluate the results carefully.','ارزیابی‌کردن؛ بررسی کیفیت یا نتیجهٔ چیزی.'],
+['approach','The teacher used a different approach to learning.','روش یا رویکرد؛ شیوهٔ انجام‌دادن کاری.'],
+['evidence','The study provides evidence for this idea.','شواهد یا مدرک؛ اطلاعاتی که از یک ادعا پشتیبانی می‌کند.'],
+['establish','The team established a clear set of goals.','ایجادکردن، پایه‌گذاری‌کردن یا تثبیت‌کردن.'],
+['contribute','Regular practice can contribute to progress.','کمک‌کردن یا سهم‌داشتن در به‌وجودآمدن یک نتیجه.']
+];
+const digits=n=>String(n).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
+function stats(){document.getElementById('exerciseCount').textContent=digits(exercises);document.getElementById('wordCount').textContent=digits(wordsSeen);document.getElementById('progress').textContent=digits(Math.min(100,exercises*20))+'٪';}
+function showPractice(i){pIndex=i;const p=practices[i];answered=false;document.getElementById('practiceTitle').textContent=p.title;document.getElementById('instruction').textContent=p.instruction;document.getElementById('passage').textContent=p.passage;document.getElementById('question').textContent=p.question;document.getElementById('feedback').textContent='';document.getElementById('answers').innerHTML='';p.answers.forEach((a,j)=>{const b=document.createElement('button');b.className='answer';b.textContent=a;b.onclick=()=>checkAnswer(b,'ABCD'[j]);document.getElementById('answers').appendChild(b)});document.getElementById('practice').scrollIntoView({behavior:'smooth'});}
+function checkAnswer(btn,letter){if(answered)return;answered=true;const p=practices[pIndex];document.querySelectorAll('.answer').forEach((b,i)=>{if('ABCD'[i]===p.correct)b.classList.add('correct')});if(letter!==p.correct)btn.classList.add('wrong');document.getElementById('feedback').textContent=(letter===p.correct?'آفرین! پاسخ درست است. ':'پاسخ درست: '+p.correct+'. ')+p.explain;exercises++;stats();}
+function nextPractice(){showPractice((pIndex+1)%practices.length)}
+function renderWord(){const w=vocab[wIndex];document.getElementById('word').textContent=w[0];document.getElementById('example').textContent=w[1];document.getElementById('meaning').textContent=w[2];document.getElementById('meaning').hidden=true;}
+function revealMeaning(){document.getElementById('meaning').hidden=false;wordsSeen++;stats()}
+function nextWord(){wIndex=(wIndex+1)%vocab.length;renderWord()}
+function speakWord(){if(!('speechSynthesis'in window)){alert('تلفظ در این مرورگر پشتیبانی نمی‌شود.');return}let u=new SpeechSynthesisUtterance(document.getElementById('word').textContent);u.lang='en-US';u.rate=.8;speechSynthesis.cancel();speechSynthesis.speak(u)}
+function updateMinutes(){document.getElementById('minutesStat').textContent=digits(document.getElementById('minutes').value)+' دقیقه'}
+function makePlan(){const n=Number(document.getElementById('minutes').value),skill=document.getElementById('weak').value,a=Math.round(n*.4),b=Math.round(n*.3),c=n-a-b;const el=document.getElementById('plan');el.innerHTML='<strong>برنامهٔ امروز تو</strong><ul><li>'+digits(a)+' دقیقه: تمرین '+skill+'</li><li>'+digits(b)+' دقیقه: واژگان و مثال‌ها</li><li>'+digits(c)+' دقیقه: مرور اشتباه‌ها</li></ul>هر روز پیشرفت کوچک هم ارزشمند است.';el.hidden=false}
+stats();renderWord();
+</script>
+</body>
+</html>
