@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#090e21">
+<meta name="description" content="Beheshta TOEFL Studio — فضای شخصی برای تمرین مهارت‌های تافل">
 <title>Beheshta TOEFL Studio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -12,7 +13,7 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:radial-gradient(ellipse at top,#252653 0,transparent 48%),var(--bg);color:var(--text);font-family:Vazirmatn,sans-serif;line-height:1.9}
-button,input,select{font:inherit}
+button,input,select,textarea{font:inherit}
 a{color:inherit;text-decoration:none}
 .wrap{width:min(1050px,calc(100% - 30px));margin:auto}
 header{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid var(--line)}
@@ -64,23 +65,30 @@ h2{font-size:25px;margin:5px 0}
 .words p{font:14px/1.8 Georgia,serif;color:#c4cde7}
 .meaning{direction:rtl;text-align:right;background:#a58cff15;border-radius:10px;padding:10px;font-size:12px;color:#d9ceff;margin:12px 0}
 label{display:block;font-size:12px;margin-top:15px;color:#c7cfe5}
-input,select{width:100%;padding:11px;border-radius:11px;background:#0b1228;border:1px solid var(--line);color:white;margin-top:7px}
+input,select,textarea{width:100%;padding:11px;border-radius:11px;background:#0b1228;border:1px solid var(--line);color:white;margin-top:7px}
 .plan-result{margin-top:15px;padding:12px;border-radius:12px;background:#77ddb714;color:#c9f2df;font-size:12px}
 .quote{font-size:21px;line-height:2;color:#ded5ff}
 footer{border-top:1px solid var(--line);margin-top:60px;padding:25px 0;color:#929dbd;font-size:11px;display:flex;justify-content:space-between;gap:12px}
-@media(max-width:700px){nav{display:none}.hero{grid-template-columns:1fr;padding-top:35px;gap:0}.art{grid-row:1;min-height:205px}.orb{width:155px;height:155px}.orb span{font-size:50px}.hero h1{font-size:35px}.skills{grid-template-columns:repeat(2,1fr)}.columns{grid-template-columns:1fr}.stats{gap:7px}.stat{padding:12px 10px}.stat strong{font-size:19px}.stat small{font-size:10px}section{padding-top:48px}h2{font-size:22px}footer{flex-wrap:wrap}}
+.tool-panel{margin-top:14px;padding:15px;border:1px solid #b9a5ff35;border-radius:14px;background:#0b1228}
+.tool-panel p{font-size:12px;color:var(--muted);margin:5px 0 12px}
+.tool-row{display:flex;gap:8px;flex-wrap:wrap}
+.tool-row .btn{flex:0 0 auto}
+.tool-status{font-size:12px;color:#bfe8d8;margin-top:10px;min-height:1.5em}
+.recording{border-color:#ff9bb7!important;color:#ffbad0!important}
+textarea.practice-text{min-height:125px;resize:vertical;direction:ltr;text-align:left}
+@media(max-width:700px){nav{display:none}.hero{grid-template-columns:1fr;padding-top:35px;gap:0}.art{grid-row:1;min-height:205px}.orb{width:155px;height:155px}.orb span{font-size:50px}.hero h1{font-size:35px}.skills{grid-template-columns:repeat(2,1fr)}.columns{grid-template-columns:1fr}.stats{gap:7px}.stat{padding:12px 10px}.stat strong{font-size:19px}.stat small{font-size:10px}section{padding-top:48px}h2{font-size:22px}footer{flex-wrap:wrap}.tool-row .btn{flex:1 1 40%}.sh-assistant{right:10px!important;bottom:12px!important;max-width:calc(100vw - 20px)!important}}
 </style>
+<link rel="stylesheet" href="style.css">
+<script src="app.js" defer></script>
 </head>
 <body>
 <div class="wrap">
 <header>
   <a class="logo" href="#">
-    <span class="logo-icon">B✦</span>
     <span><strong>Beheshta</strong><small>TOEFL STUDIO</small></span>
   </a>
   <nav><a href="#skills">مهارت‌ها</a><a href="#vocab">واژه‌یار</a><a href="#planner">برنامهٔ من</a></nav>
 </header>
-
 <main>
 <section class="hero" style="padding-top:50px">
   <div>
@@ -91,13 +99,11 @@ footer{border-top:1px solid var(--line);margin-top:60px;padding:25px 0;color:#92
   </div>
   <div class="art"><div class="orb"><span>✦</span></div><div class="float one">✧ Keep going</div><div class="float two">♥ یک قدم در هر روز</div></div>
 </section>
-
 <div class="stats">
   <div class="stat"><small>تمرین‌های انجام‌شده</small><strong id="exerciseCount">۰</strong></div>
   <div class="stat"><small>لغت‌های مرورشده</small><strong id="wordCount">۰</strong></div>
   <div class="stat"><small>هدف روزانه</small><strong id="minutesStat">۳۰ دقیقه</strong></div>
 </div>
-
 <section id="skills">
   <div class="section-head"><div class="eyebrow">BUILD YOUR SKILLS</div><h2>چهار مهارت اصلی تافل</h2><p class="sub">از یک تمرین کوتاه شروع کن و آرام‌آرام پیش برو.</p></div>
   <div class="skills">
@@ -107,7 +113,6 @@ footer{border-top:1px solid var(--line);margin-top:60px;padding:25px 0;color:#92
     <button class="skill" onclick="showPractice(3)"><span class="symbol">✎</span><strong>Writing</strong><p>نوشتن و بهترسازی جمله‌ها</p></button>
   </div>
 </section>
-
 <section class="columns" id="practice">
   <div class="card">
     <div class="eyebrow">QUICK PRACTICE</div><h2 id="practiceTitle">Reading · تمرین کوتاه</h2>
@@ -125,7 +130,6 @@ footer{border-top:1px solid var(--line);margin-top:60px;padding:25px 0;color:#92
   </div>
   <aside class="card"><div class="eyebrow">A LITTLE REMINDER</div><p class="quote">لازم نیست هر روز کامل باشی؛ فقط کافی‌ست هر روز یک قدم برداری.</p><p class="sub">به توانایی‌هایت باور داشته باش.</p><hr style="border-color:var(--line);margin:25px 0"><div class="eyebrow">YOUR PROGRESS</div><p class="sub">پیشرفت با تمرین‌های انجام‌شده ثبت می‌شود.</p><h2 id="progress">۰٪</h2></aside>
 </section>
-
 <section id="vocab">
   <div class="section-head"><div class="eyebrow">DAILY VOCABULARY</div><h2>واژه‌یار روزانه</h2><p class="sub">یک لغت را یاد بگیر، معنی‌اش را ببین و تلفظش را بشنو.</p></div>
   <div class="card">
@@ -133,7 +137,6 @@ footer{border-top:1px solid var(--line);margin-top:60px;padding:25px 0;color:#92
     <div class="actions"><button class="btn primary" onclick="revealMeaning()">نمایش معنی</button><button class="btn" onclick="speakWord()">🔊 شنیدن تلفظ</button><button class="btn" onclick="nextWord()">لغت بعدی ←</button></div>
   </div>
 </section>
-
 <section id="planner">
   <div class="section-head"><div class="eyebrow">YOUR STUDY PLAN</div><h2>برنامهٔ مطالعهٔ تو</h2><p class="sub">یک برنامهٔ ساده بساز که با وقتت سازگار باشد.</p></div>
   <div class="card">
@@ -143,19 +146,26 @@ footer{border-top:1px solid var(--line);margin-top:60px;padding:25px 0;color:#92
     <select id="weak"><option>Reading</option><option>Listening</option><option>Speaking</option><option>Writing</option></select>
     <button class="btn primary" style="margin-top:18px" onclick="makePlan()">ساخت برنامهٔ امروز</button>
     <div class="plan-result" id="plan" hidden></div>
+    <div class="tool-panel">
+      <strong>شروع جلسهٔ مطالعه با SH 💜</strong>
+      <p>زمان مطالعه را انتخاب کن؛ SH همراهت یادآوری می‌کند و در پایان پیام موفقیت نشان می‌دهد.</p>
+      <div class="tool-row">
+        <button class="btn primary" onclick="window.SH && window.SH.scheduleStudyEnd(Number(document.getElementById('minutes').value))">شروع جلسه</button>
+        <button class="btn" onclick="window.SH && window.SH.stopStudy()">توقف یادآوری</button>
+      </div>
+      <div class="tool-status" id="studyStatus" aria-live="polite"></div>
+    </div>
   </div>
 </section>
-
 <section><div class="card" style="text-align:center"><div class="eyebrow">FOR YOU, WITH LOVE</div><h2>برای تو، با آرزوی موفقیت <span class="heart">♥</span></h2><p class="sub">آینده با قدم‌های کوچک ساخته می‌شود. من برای موفقیتت دعا می‌کنم.</p></div></section>
 </main>
 <footer><span>Beheshta TOEFL Studio</span><span>نسخهٔ آغازین · ساخته‌شده با عشق</span></footer>
 </div>
-
 <script>
 const practices=[
 {title:'Reading · تمرین کوتاه',instruction:'متن را بخوان و بهترین پاسخ را انتخاب کن.',passage:'Research suggests that urban green spaces can improve residents’ well-being. Parks provide opportunities for exercise and social interaction, while trees may help reduce the effects of high temperatures. However, the benefits are not distributed equally when some neighborhoods have fewer public green areas.',question:'What is the main point of the passage?',answers:['A. Parks are expensive to maintain.','B. Green spaces offer benefits, but access can be unequal.','C. Trees prevent every urban problem.','D. Cities should remove public parks.'],correct:'B',explain:'متن هم مزایای فضای سبز را می‌گوید و هم به نابرابری دسترسی اشاره می‌کند.'},
-{title:'Listening · تمرین نمونه',instruction:'این متن را مانند یک گفتار کوتاه بخوان و پاسخ بده.',passage:'Professor: Your research proposal is due on Friday. Include a clear research question and at least two academic sources. You do not need to finish the entire project.',question:'What should the proposal include?',answers:['A. The complete final project.','B. A clear question and two academic sources.','C. Five interviews.','D. A ten-minute speech.'],correct:'B',explain:'این تمرین شبیه‌سازی متنی است، نه فایل صوتی واقعی. استاد پرسش روشن و دو منبع را خواسته است.'},
-{title:'Speaking · تمرین پاسخ',instruction:'پاسخت را با یک نظر و یک دلیل بساز.',passage:'Speaking prompt: Do you prefer studying alone or with a group? Explain your preference and give an example.',question:'کدام روش برای ساخت پاسخ روشن بهتر است؟',answers:['A. نظر، دلیل و مثال','B. فقط تکرار پرسش','C. جمله‌های نامرتبط','D. بدون هیچ دلیل'],correct:'A',explain:'ابتدا نظرت را بگو، بعد دلیل و یک مثال کوتاه اضافه کن. ارزیابی صوتی هنوز فعال نیست.'},
+{title:'Listening · تمرین شنیداری',instruction:'صدا را پخش کن، سپس پاسخ را انتخاب کن.',passage:'Professor: Your research proposal is due on Friday. Include a clear research question and at least two academic sources. You do not need to finish the entire project.',question:'What should the proposal include?',answers:['A. The complete final project.','B. A clear question and two academic sources.','C. Five interviews.','D. A ten-minute speech.'],correct:'B',explain:'استاد پرسش روشن و دست‌کم دو منبع اکادمیک را خواسته است.'},
+{title:'Speaking · تمرین پاسخ',instruction:'به پرسش پاسخ بده؛ می‌توانی صدایت را ضبط کنی.',passage:'Speaking prompt: Do you prefer studying alone or with a group? Explain your preference and give an example.',question:'کدام روش برای ساخت پاسخ روشن بهتر است؟',answers:['A. نظر، دلیل و مثال','B. فقط تکرار پرسش','C. جمله‌های نامرتبط','D. بدون هیچ دلیل'],correct:'A',explain:'ابتدا نظرت را بگو، بعد دلیل و یک مثال کوتاه اضافه کن.'},
 {title:'Writing · دستور زبان',instruction:'جملهٔ درست را انتخاب کن.',passage:'Academic writing is clearer when the subject and verb agree and each sentence expresses a complete idea.',question:'Which sentence is correct?',answers:['A. Students needs more time.','B. Students need more time.','C. Students needing more time.','D. Students is need more time.'],correct:'B',explain:'Students فاعل جمع است؛ پس فعل درست need است.'}
 ];
 let pIndex=0,answered=false,exercises=0,wordsSeen=0,wIndex=0;
@@ -169,15 +179,15 @@ const vocab=[
 ];
 const digits=n=>String(n).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
 function stats(){document.getElementById('exerciseCount').textContent=digits(exercises);document.getElementById('wordCount').textContent=digits(wordsSeen);document.getElementById('progress').textContent=digits(Math.min(100,exercises*20))+'٪';}
-function showPractice(i){pIndex=i;const p=practices[i];answered=false;document.getElementById('practiceTitle').textContent=p.title;document.getElementById('instruction').textContent=p.instruction;document.getElementById('passage').textContent=p.passage;document.getElementById('question').textContent=p.question;document.getElementById('feedback').textContent='';document.getElementById('answers').innerHTML='';p.answers.forEach((a,j)=>{const b=document.createElement('button');b.className='answer';b.textContent=a;b.onclick=()=>checkAnswer(b,'ABCD'[j]);document.getElementById('answers').appendChild(b)});document.getElementById('practice').scrollIntoView({behavior:'smooth'});}
-function checkAnswer(btn,letter){if(answered)return;answered=true;const p=practices[pIndex];document.querySelectorAll('.answer').forEach((b,i)=>{if('ABCD'[i]===p.correct)b.classList.add('correct')});if(letter!==p.correct)btn.classList.add('wrong');document.getElementById('feedback').textContent=(letter===p.correct?'آفرین! پاسخ درست است. ':'پاسخ درست: '+p.correct+'. ')+p.explain;exercises++;stats();}
+function showPractice(i){pIndex=i;const p=practices[i];answered=false;document.getElementById('practiceTitle').textContent=p.title;document.getElementById('instruction').textContent=p.instruction;document.getElementById('passage').textContent=p.passage;document.getElementById('question').textContent=p.question;document.getElementById('feedback').textContent='';document.getElementById('answers').innerHTML='';p.answers.forEach((a,j)=>{const b=document.createElement('button');b.className='answer';b.textContent=a;b.onclick=()=>checkAnswer(b,'ABCD'[j]);document.getElementById('answers').appendChild(b)});document.getElementById('practice').scrollIntoView({behavior:'smooth'});if(window.refreshPracticeTools)window.refreshPracticeTools(i);}
+function checkAnswer(btn,letter){if(answered)return;answered=true;const p=practices[pIndex];document.querySelectorAll('.answer').forEach((b,i)=>{if('ABCD'[i]===p.correct)b.classList.add('correct')});if(letter!==p.correct)btn.classList.add('wrong');document.getElementById('feedback').textContent=(letter===p.correct?'آفرین! پاسخ درست است. ':'پاسخ درست: '+p.correct+'. ')+p.explain;exercises++;stats();if(window.saveStudyProgress)window.saveStudyProgress();}
 function nextPractice(){showPractice((pIndex+1)%practices.length)}
 function renderWord(){const w=vocab[wIndex];document.getElementById('word').textContent=w[0];document.getElementById('example').textContent=w[1];document.getElementById('meaning').textContent=w[2];document.getElementById('meaning').hidden=true;}
-function revealMeaning(){document.getElementById('meaning').hidden=false;wordsSeen++;stats()}
+function revealMeaning(){document.getElementById('meaning').hidden=false;wordsSeen++;stats();if(window.saveStudyProgress)window.saveStudyProgress();}
 function nextWord(){wIndex=(wIndex+1)%vocab.length;renderWord()}
 function speakWord(){if(!('speechSynthesis'in window)){alert('تلفظ در این مرورگر پشتیبانی نمی‌شود.');return}let u=new SpeechSynthesisUtterance(document.getElementById('word').textContent);u.lang='en-US';u.rate=.8;speechSynthesis.cancel();speechSynthesis.speak(u)}
-function updateMinutes(){document.getElementById('minutesStat').textContent=digits(document.getElementById('minutes').value)+' دقیقه'}
-function makePlan(){const n=Number(document.getElementById('minutes').value),skill=document.getElementById('weak').value,a=Math.round(n*.4),b=Math.round(n*.3),c=n-a-b;const el=document.getElementById('plan');el.innerHTML='<strong>برنامهٔ امروز تو</strong><ul><li>'+digits(a)+' دقیقه: تمرین '+skill+'</li><li>'+digits(b)+' دقیقه: واژگان و مثال‌ها</li><li>'+digits(c)+' دقیقه: مرور اشتباه‌ها</li></ul>هر روز پیشرفت کوچک هم ارزشمند است.';el.hidden=false}
+function updateMinutes(){document.getElementById('minutesStat').textContent=digits(document.getElementById('minutes').value);document.getElementById('minutesStat').textContent+=' دقیقه';if(window.saveStudyProgress)window.saveStudyProgress();}
+function makePlan(){const n=Number(document.getElementById('minutes').value),skill=document.getElementById('weak').value,a=Math.round(n*.4),b=Math.round(n*.3),c=n-a-b;const el=document.getElementById('plan');el.innerHTML='<strong>برنامهٔ امروز تو</strong><ul><li>'+digits(a)+' دقیقه: تمرین '+skill+'</li><li>'+digits(b)+' دقیقه: واژگان و مثال‌ها</li><li>'+digits(c)+' دقیقه: مرور اشتباه‌ها</li></ul>هر روز پیشرفت کوچک هم ارزشمند است.';el.hidden=false;if(window.saveStudyProgress)window.saveStudyProgress();}
 stats();renderWord();
 </script>
 </body>
